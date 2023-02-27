@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo">
+
+<h1>Factura SAT</h1>
+<button type="button" onclick="loadDoc()">Cargar datos</button>
+</div>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      cargarXML(this);
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "pago.xml", true);
+  xhttp.send();
+}
+
+function cargarXML(xml){
+  var xmlDoc = xml.responseXML;
+  // xmlDoc = parser.parseFromString(text,"text/xml");
+  var parser, cadena, text;
+  parser = new DOMParser();
+  var re, rr, tt, id;
+  var inicio = "<![CDATA[?";
+  var fin = "]]>";
+  re = xmlDoc.getElementsByTagName("cfdi:Emisor")[0].textContent;
+  rr = xmlDoc.getElementsByTagName("cfdi:Receptor")[0].textContent;
+  tt = xmlDoc.getElementsByTagName("cfdi:Comprobante")[0].textContent;
+  id = xmlDoc.getElementsByTagName("tfd:TimbreFiscalDigital")[0].textContent;
+  cadena = inicio.concat("re=",re,"&rr=",rr,"&tt=",tt,"&id=",id,fin);
+  window.print(cadena);
+}
+</script>
+
+</body>
+</html>
