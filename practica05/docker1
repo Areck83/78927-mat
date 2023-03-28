@@ -1,0 +1,11 @@
+FROM ubuntu:latest
+WORKDIR /tareasmatadoras
+EXPOSE 8080
+CMD ["/tareasmatadoras/mvnw", "spring-boot:run"]
+RUN apt-get update
+RUN apt-get install -y openjdk-8-jdk
+RUN apt-get install -y curl
+RUN apt-get install -y unzip
+RUN curl -G https://start.spring.io/starter.zip -d dependencies=web-services -d javaVersion=8 -d groupId=mx.uv -d artifactId=practicaXX -d language=java -d type=maven-project -d bootVersion=2.7.9 -o demo.zip
+RUN unzip demo.zip
+RUN /tareasmatadoras/mvnw install

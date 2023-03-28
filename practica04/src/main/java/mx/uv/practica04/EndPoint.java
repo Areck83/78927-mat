@@ -1,7 +1,5 @@
 package mx.uv.practica04;
-
-import java.util.ArrayList;
-
+//import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -22,7 +20,7 @@ public class EndPoint {
     @Autowired
     private ISaludador iSaludador;
     //Autowired permite la inserción en tiempo de ejecución
-    public static ArrayList<String> saludos = new ArrayList<>();
+    //public static ArrayList<String> saludos = new ArrayList<>();
 
     @PayloadRoot(localPart = "SaludarRequest", namespace = "https://t4is.uv.mx/saludos")
     
@@ -30,7 +28,7 @@ public class EndPoint {
     public SaludarResponse Saludar(@RequestPayload SaludarRequest peticion){
         SaludarResponse i = new SaludarResponse(); 
         i.setRespuesta("Hola " + peticion.getNombre());
-        saludos.add(peticion.getNombre());
+        //saludos.add(peticion.getNombre());
 
         //persistencia a la BD
         Saludador saludador = new Saludador();
@@ -44,16 +42,8 @@ public class EndPoint {
     @ResponsePayload
     public BuscarResponse BuscarSaludo(@RequestPayload BuscarRequest peticion){
         BuscarResponse s = new BuscarResponse();
-        String respuesta;
-        int ind = peticion.getSaludobuscar();
-        //System.out.println(ind);
-        if(ind > saludos.size()){
-            respuesta = "No encontrado";
-        }else{
-            respuesta = saludos.get(ind);
-        }
-        //System.out.println(respuesta);
-        s.setSaludobuscado(respuesta);
+        Saludador saludador = iSaludador.findById(peticion.getSaludobuscar()).get();
+        s.setSaludobuscado(saludador.getNombre());
         return s;
     }
 
@@ -61,22 +51,11 @@ public class EndPoint {
     @ResponsePayload
     public EditarResponse EditarSaludo(@RequestPayload EditarRequest peticion){
         EditarResponse a = new EditarResponse();
-        int ind = peticion.getIndexeditar();
-        String nombre = peticion.getSaludoeditar();
-        String respuesta;
-        if( ind <= saludos.size()){
-            respuesta = "Se ha modificado el saludo";
-            String nombreAnterior = saludos.get(ind);
-            saludos.set(ind, nombre);
-            a.setAviso(respuesta);
-            a.setSaludoeditado(nombreAnterior);
-            a.setSaludonuevo(nombre);
-        }else{
-            respuesta = "No se ha encontrado ese elemento";
-            a.setAviso(respuesta);
-            a.setSaludoeditado("No encontrado");
-            a.setSaludonuevo("No se ha cambiado nada");
-        }
+        Saludador saludador = new Saludador();
+        saludador.setId(peticion.getIndexeditar());
+        saludador.setNombre(peticion.getSaludoeditar());
+        iSaludador.save(saludador);
+        a.setAviso("Saludo actualizado");
         return a;
     }
 
@@ -84,19 +63,8 @@ public class EndPoint {
     @ResponsePayload
     public EliminarResponse EliminarSaludo(@RequestPayload EliminarRequest peticion){
         EliminarResponse c = new EliminarResponse();
-        int ind = peticion.getIndex();
-        String respuesta;
-        String aviso;
-        if ( ind > saludos.size()){
-            aviso = "No existe ese elemento";
-            respuesta = "Sin Cambios";
-        }else{
-            aviso = "Se ha eliminado un elemento";
-            respuesta = saludos.get(ind);
-            saludos.remove(ind);
-        }
-        c.setAviso(aviso);
-        c.setNombre(respuesta);
+        iSaludador.deleteById(peticion.getIndex());
+        c.setAviso("Se ha eliminado el elemento");
         return c;
     }
 }
