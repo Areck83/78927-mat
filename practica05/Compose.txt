@@ -1,0 +1,25 @@
+#Notas del compose 30-03-2023
+FROM amazoncorretto
+WORKDIR /tareasmatadoras
+EXPOSE 8080
+#La siguiente instruccion no se ejecuta durante la creación de la imagen, se ejecuta cuando se crea el contenedor
+CMD ["/tareasmatadoras/mvnw", "spring-boot:run"]
+RUN yum-install -y unzip
+RUN curl -G https://start.spring.io/starter.zip -d dependencies=web-services -d javaVersion=8 -d groupId=mx.uv -d artifactId=practicaXX -d language=java -d type=maven-project -d bootVersion=2.7.9 -o demo.zip
+RUN unzip demo.zip
+RUN /tareasmatadoras/mvnw install
+
+
+clonar el proyecto de github y montarlo dentro del coretto como app
+
+###ejecutar el proyecto###
+>maven install
+>maven -DskipTest package
+
+
+FROM ibmjava:jre
+WORKDIR /app
+EXPOSE 8080
+add /root/78927-mat/practica04/target/Saludos.jar /app/x.jar (Hechar al contenedor el jar pues)
+RUN yum-install -y unzip
+CMD ["java", "-jar", "x.jar"]
