@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="https://t4is.proyecto1.equipo3/salones"
+ xmlns:tns="https://t4is.proyecto1.equipo3/salones"
+ elementFormDefault="qualified">
+
+ <xs:element name="RegistrarSalonRequest">
+  <xs:complexType>
+   <xs:sequence>
+  	<xs:element name="idSalon" type="xs:string"/>
+    <xs:element name="ubicacion" type="xs:string"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="RegistrarSalonResponse">
+  <xs:complexType>
+   <xs:sequence>
+  	<xs:element name="respuesta" type="xs:string"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="BuscarSalonRequest">
+  <xs:complexType>
+   <xs:sequence>
+  	<xs:element name="salonABuscar" type="xs:string"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="BuscarSalonResponse">
+  <xs:complexType>
+   <xs:sequence>
+  	<xs:element name="respuesta" type="xs:string"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="EditarSalonRequest">
+  <xs:complexType>
+   <xs:sequence>
+  	<xs:element name="salonAEditar" type="xs:string"/>
+    <xs:element name="ubicacionAEditar" type="xs:string"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="EditarSalonResponse">
+  <xs:complexType>
+   <xs:sequence>
+  	<xs:element name="aviso" type="xs:string"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="EliminarSalonRequest">
+  <xs:complexType>
+   <xs:sequence>
+  	<xs:element name="idSalon" type="xs:string"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="EliminarSalonResponse">
+  <xs:complexType>
+   <xs:sequence>
+  	<xs:element name="respuesta" type="xs:string"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="ListarSalonesRequest">
+ </xs:element>
+
+ <xs:element name="ListarSalonesResponse">
+  <xs:complexType>
+   <xs:sequence>
+  	<xs:element name="respuesta" type="xs:string"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ 
+</xs:schema>
