@@ -3,6 +3,11 @@ package mx.uv.demo;
 public class Productos {
     String nombre;
     Integer cantidad;
+
+    public Productos() {
+        this.nombre = "";
+        this.cantidad = 0;
+    }
     
     public Productos(String nombre, Integer cantidad) {
         this.nombre = nombre;

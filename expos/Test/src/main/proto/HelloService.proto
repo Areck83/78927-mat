@@ -1,0 +1,34 @@
+//Para esta práctica fue necesario el protobuffer como variable de entorno
+
+syntax = "proto3";
+//Normalmente en proto el compilador genera todo el codigo de java en una sola clase
+//Esto se evita con la linea siguiente para que todos sean individuales
+option java_multiple_files = true;
+package com.grpc.equipo3.Test;
+
+//Equivalencia de RequestPayload
+message HelloRequest {
+    //Un numero unico debe de estar en cada atributo, conocido como "Tag"
+    //Esto representa al atributo en si mas que el nombre
+    string firstName = 1;
+    string lastName = 2;
+    /*Ejemplos de campos para un directorio
+        required string name = 1;
+        required int32 id = 2;
+        optional string email = 3;
+
+        repeated string numbers = 4;
+    */
+}
+
+message HelloResponse{
+    string greeting = 1;
+}
+
+/*message Directorio{
+    repeated Persona personas = 1;
+}*/
+
+service HelloService{
+    rpc hello(HelloRequest) returns (HelloResponse);
+}

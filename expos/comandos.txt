@@ -1,0 +1,5 @@
+mvn -DskipTests package exec:java -Dexec.mainClass=com.grpc.equipo3.Test.GrpcServer
+
+
+mvn -DskipTests package exec:java -Dexec.mainClass=com.grpc.equipo3.Test.GrpcClient
+
