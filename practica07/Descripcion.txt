@@ -1,0 +1,1 @@
+Esta práctica es un ejemplo de la utilización de REST con Spring

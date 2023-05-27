@@ -1,0 +1,1 @@
+Esta práctica sirve para consumir otro servicio (API) con Spring. 
