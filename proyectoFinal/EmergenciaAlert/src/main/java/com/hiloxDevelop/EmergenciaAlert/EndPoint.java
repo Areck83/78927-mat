@@ -33,8 +33,8 @@ public class EndPoint {
         agenda.setTelefono(peticion.getTelefono());
         agenda.setDireccion(peticion.getDireccion());
         agenda.setAlias(peticion.getAlias());
-        agenda.setLat(peticion.getLat());
-        agenda.setLon(peticion.getLon());
+        agenda.setLatitude(peticion.getLatitude());
+        agenda.setLongitude(peticion.getLongitude());
         iDirectorioEmergencias.save(agenda);
         return i;
     }
@@ -49,8 +49,8 @@ public class EndPoint {
         s.setDireccion(agenda.getDireccion());
         s.setTelefono(agenda.getTelefono());
         s.setAlias(agenda.getAlias());
-        s.setLat(agenda.getLat());
-        s.setLon(agenda.getLon());
+        s.setLatitude(agenda.getLatitude());
+        s.setLongitude(agenda.getLongitude());
         return s;
     }
 
@@ -64,8 +64,8 @@ public class EndPoint {
         agenda.setDireccion(peticion.getDireccion());
         agenda.setTelefono(peticion.getTelefono());
         agenda.setAlias(peticion.getAlias());
-        agenda.setLat(peticion.getLat());
-        agenda.setLon(peticion.getLon());
+        agenda.setLatitude(peticion.getLatitude());
+        agenda.setLongitude(peticion.getLongitude());
         iDirectorioEmergencias.save(agenda);
         a.setAviso("Se ha actualizado el contacto");
         return a;
@@ -93,8 +93,8 @@ public class EndPoint {
             n.setDireccion(contacto.getDireccion());
             n.setTelefono(contacto.getTelefono());
             n.setAlias(contacto.getAlias());
-            n.setLat(contacto.getLat());
-            n.setLon(contacto.getLon());
+            n.setLatitude(contacto.getLatitude());
+            n.setLongitude(contacto.getLongitude());
             x.getContacto().add(n);
         }
         return x;

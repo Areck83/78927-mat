@@ -15,20 +15,21 @@ public class DirectorioEmergencias {
     private String telefono;
     private String direccion;
     private String alias;
-    private String lat;
-    private String lon;
+    private Float latitude;
+    private Float longitude;
     
-    public String getLat() {
-        return lat;
+    
+    public Float getLatitude() {
+        return latitude;
     }
-    public void setLat(String lat) {
-        this.lat = lat;
+    public void setLatitude(Float latitude) {
+        this.latitude = latitude;
     }
-    public String getLon() {
-        return lon;
+    public Float getLongitude() {
+        return longitude;
     }
-    public void setLon(String lon) {
-        this.lon = lon;
+    public void setLongitude(Float longitude) {
+        this.longitude = longitude;
     }
     public Integer getId() {
         return id;

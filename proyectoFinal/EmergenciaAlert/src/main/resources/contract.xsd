@@ -11,8 +11,8 @@
     <xs:element name="telefono" type="xs:string"/>
     <xs:element name="direccion" type="xs:string"/>
     <xs:element name="alias" type="xs:string"/>
-    <xs:element name="lat" type="xs:string"/>
-    <xs:element name="lon" type="xs:string"/>
+    <xs:element name="latitude" type="xs:float"/>
+    <xs:element name="longitude" type="xs:float"/>
    </xs:sequence>
   </xs:complexType>
  </xs:element>
@@ -41,8 +41,8 @@
     <xs:element name="telefono" type="xs:string"/>
     <xs:element name="direccion" type="xs:string"/>
     <xs:element name="alias" type="xs:string"/>
-    <xs:element name="lat" type="xs:string"/>
-    <xs:element name="lon" type="xs:string"/>
+    <xs:element name="latitude" type="xs:float"/>
+    <xs:element name="longitude" type="xs:float"/>
    </xs:sequence>
   </xs:complexType>
  </xs:element>
@@ -55,8 +55,8 @@
     <xs:element name="telefono" type="xs:string"/>
     <xs:element name="direccion" type="xs:string"/>
     <xs:element name="alias" type="xs:string"/>
-    <xs:element name="lat" type="xs:string"/>
-    <xs:element name="lon" type="xs:string"/>
+    <xs:element name="latitude" type="xs:float"/>
+    <xs:element name="longitude" type="xs:float"/>
    </xs:sequence>
   </xs:complexType>
  </xs:element>
@@ -99,8 +99,8 @@
             <xs:element name="telefono" type="xs:string"/>
             <xs:element name="direccion" type="xs:string"/>
             <xs:element name="alias" type="xs:string"/>
-            <xs:element name="lat" type="xs:string"/>
-            <xs:element name="lon" type="xs:string"/>
+            <xs:element name="latitude" type="xs:float"/>
+            <xs:element name="longitude" type="xs:float"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
