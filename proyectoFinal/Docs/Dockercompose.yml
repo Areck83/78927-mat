@@ -1,0 +1,70 @@
+version: '3.3'
+networks:
+    reportNet:
+        external: true
+
+services:
+    bdgraph:
+        image: diego178q/serviciographql
+        networks:
+            - reportNet
+        environment:
+            - MYSQL_HOST=db
+        depends_on:
+            - db 
+        ports:
+            - "4000:4000"
+        links:
+            - db
+        restart: always
+
+    apirest:
+        image: diego178q/apirest
+        networks:
+            - reportNet
+        environment:
+            - MYSQL_HOST=db
+        depends_on:
+            - db
+        ports:
+            - "8000:8000"
+        links:
+            - db
+        restart: always
+
+    apisoap:
+        image: areck83/emergencyapi
+        networks:
+            - reportNet
+        environment:
+            - MYSQL_HOST=db
+        depends_on:
+            - db
+        ports:
+            - "8080:8080"
+        links:
+            - db
+        restart: always
+      
+    db:
+        image: mariadb
+        networks:
+            - reportNet
+        ports:
+            - "3306:3306"
+        environment:
+            - MARIADB_USER=yo
+            - MARIADB_PASSWORD=1234
+            - MARIADB_DATABASE=directorioemergencias
+            - MARIADB_ROOT_PASSWORD=1234
+    
+    mosquito:
+        image: diego178q/mosquitto
+        networks:
+            - reportNet
+        ports:
+            - "1883:1883"
+            - "9001:9001"
+        
+    
+
